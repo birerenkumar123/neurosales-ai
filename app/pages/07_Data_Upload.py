@@ -15,18 +15,21 @@ st.set_page_config(
 )
 
 # ── Path & Navbar ──
-_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+_app_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if _root not in sys.path:
     sys.path.append(_root)
+if _app_path not in sys.path:
+    sys.path.append(_app_path)
+
 from styles_helper import inject_global_css_and_navbar
 inject_global_css_and_navbar()
 
 # ── Import Prediction Modules ──
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
 try:
     from src.preprocessing import feature_engineering
     from src.models_torch import NeuroSalesNet
-except:
+except ImportError:
     pass
 
 st.markdown("""

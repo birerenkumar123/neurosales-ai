@@ -9,8 +9,15 @@ from datetime import datetime, timedelta
 
 st.set_page_config(page_title="AI Forecast", page_icon="📈", layout="wide")
 
+# ── Dynamic Path Setup ──
+_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+_app_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if _root not in sys.path:
+    sys.path.append(_root)
+if _app_path not in sys.path:
+    sys.path.append(_app_path)
+
 # ── Global UI & Navbar ──
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from styles_helper import inject_global_css_and_navbar
 inject_global_css_and_navbar()
 
@@ -62,17 +69,4 @@ else:
     st.warning("Forecasting Model is empty. Run `python src/train_forecast.py` to generate the brain.")
 
 
-# --- AI Floating Chat Widget ---
-import sys
-import os
-# Dynamically add root to path
-_root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')) if 'pages' in __file__ else os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _root_path not in sys.path:
-    sys.path.append(_root_path)
-
-try:
-    from llm.chat_widget import render_chat_widget
-    render_chat_widget()
-except Exception as e:
-    import streamlit as st
-    st.error(f"Chat widget error: {e}")
+# Chat Widget is now automatically injected by inject_global_css_and_navbar()

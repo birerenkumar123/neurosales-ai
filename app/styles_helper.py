@@ -13,6 +13,17 @@ def inject_global_css_and_navbar():
     is_logged_in = st.session_state.get('logged_in', False)
     
     if is_logged_in:
+        # ── Global Chat Widget (NOVA AI) ──
+        import sys
+        _root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        if _root not in sys.path:
+            sys.path.append(_root)
+        try:
+            from llm.chat_widget import render_chat_widget
+            render_chat_widget()
+        except:
+            pass
+
         # ── Modern Stable Navbar (Only for active sessions) ──
         navbar_html = """
         <div class="nav-container">

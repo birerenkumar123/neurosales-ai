@@ -2,16 +2,22 @@ import streamlit as st
 import time
 import os
 import sys
+
+# ── Dynamic Path Setup ──
+_root = os.path.abspath(os.path.dirname(__file__))
+if _root not in sys.path:
+    sys.path.append(_root)
+# Also append "app" to sys.path to ensure styles_helper can be found by sub-pages
+_app_path = os.path.join(_root, 'app')
+if _app_path not in sys.path:
+    sys.path.append(_app_path)
+
 st.set_page_config(
     page_title="NeuroSales AI — Revenue Intelligence Platform",
     page_icon="🧠",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
-# ── Path Setup ──
-_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if _root not in sys.path:
-    sys.path.append(_root)
 
 # ── Global Styles & Navbar ──
 if 'logged_in' not in st.session_state:

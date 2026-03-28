@@ -8,8 +8,15 @@ from sklearn.preprocessing import StandardScaler
 
 st.set_page_config(page_title="Customer CRM", page_icon="👥", layout="wide")
 
+# ── Dynamic Path Setup ──
+_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+_app_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if _root not in sys.path:
+    sys.path.append(_root)
+if _app_path not in sys.path:
+    sys.path.append(_app_path)
+
 # ── Global UI & Navbar ──
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from styles_helper import inject_global_css_and_navbar
 inject_global_css_and_navbar()
 

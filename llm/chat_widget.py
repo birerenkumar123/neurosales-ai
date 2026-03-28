@@ -66,7 +66,7 @@ def render_chat_widget():
         """, unsafe_allow_html=True)
 
         # Groq API Key
-        api_key = "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"
+        api_key = st.secrets.get("GROQ_API_KEY", "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")
 
         if "chat_history" not in st.session_state:
             st.session_state.chat_history = []

@@ -11,9 +11,15 @@ st.set_page_config(
 )
 
 # ── Dynamic Path Setup ──
-_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# Assistant.py is in app/pages/
+# _root is c:/ts/Neurosales_ai
+_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+_app_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
 if _root not in sys.path:
     sys.path.append(_root)
+if _app_path not in sys.path:
+    sys.path.append(_app_path)
 
 # ── Styles & Navbar ──
 from styles_helper import inject_global_css_and_navbar
@@ -35,7 +41,7 @@ st.markdown("""
 
 # ── Chat Core ──
 from llm.assistant import chat_with_neurosales
-api_key = "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"
+api_key = st.secrets.get("GROQ_API_KEY", "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")
 
 if "chat_history_full" not in st.session_state:
     st.session_state.chat_history_full = []
