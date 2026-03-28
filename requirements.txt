@@ -1,0 +1,13 @@
+pandas
+scikit-learn
+joblib
+streamlit
+plotly
+fastapi
+uvicorn
+openai
+mysql-connector-python
+python-dotenv
+sqlalchemy
+torch
+skorch

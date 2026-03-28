@@ -1,0 +1,55 @@
+/* NeuroSales AI - Liquid Scalable UI (Universal Auto-Fit) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+* { 
+    font-family: 'Inter', sans-serif; 
+    box-sizing: border-box; 
+    overflow-wrap: break-word; 
+}
+
+/* ── Base App ── */
+.stApp { background: #060612 !important; color: #f9fafb !important; }
+header, [data-testid="stHeader"], [data-testid="stToolbar"] { display: none !important; }
+
+/* Fixed Block Container Styling to prevent Navbar overlap */
+.block-container { 
+    padding: clamp(0.5rem, 2vw, 2rem) !important; 
+    max-width: 1400px !important; 
+    margin: 0 auto !important;
+    padding-top: 1rem !important; /* Proper padding for visibility */
+}
+
+/* Smart Grid & Spacing */
+[data-testid="stVerticalBlock"] { gap: clamp(10px, 2vw, 24px) !important; }
+[data-testid="stHorizontalBlock"] { gap: clamp(10px, 2vw, 20px) !important; }
+
+/* ── Metrics (Liquid) ── */
+div[data-testid="metric-container"] {
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: clamp(8px, 1.5vw, 16px) !important; 
+    padding: clamp(10px, 2vw, 20px) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* ── Feature Cards (Scaling) ── */
+.feature-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: clamp(12px, 2vw, 20px); 
+    padding: clamp(16px, 2.5vw, 28px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+.feature-card:hover { 
+    background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(6,6,18,1));
+    border-color: rgba(167,139,250,0.4);
+    transform: translateY(-5px);
+}
+.feature-icon { font-size: clamp(24px, 3vw, 36px); margin-bottom: 12px; }
+.feature-title { font-size: clamp(14px, 1.5vw, 18px); font-weight: 800; color: #ffffff; }
+.feature-desc { font-size: clamp(11px, 1.1vw, 13px); color: #9ca3af; line-height: 1.6; }
+
+@media (max-width: 768px) {
+    .block-container { padding: 0.5rem !important; }
+}
